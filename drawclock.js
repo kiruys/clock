@@ -2,7 +2,7 @@ $(document).ready(function () {
 	drawClock();
 
 	function drawClock() {
-		var canvas, context, clock, hands;	
+		var canvas, context, clock, hands, hand;	
 		canvas = document.getElementById("canvas_clock");
 		context = canvas.getContext('2d');
 
@@ -12,19 +12,27 @@ $(document).ready(function () {
 					centerRadius: canvas.height * 0.01,
 					centerX: canvas.width / 2,
 					centerY: canvas.height / 2
-					};
-		hands = {	hourRadius : canvas.height / 2 * 0.3,
-					minuteRadius: canvas.height / 2 * 0.5,
-					hourColor : 'green',
-					minuteColor : 'red',
+				};
+
+		hands = {	hour : {
+							radius : canvas.height / 2 * 0.15,
+							angle : 180,
+							color : 'green'
+							},
+					minute : {
+							radius : canvas.height / 2 * 0.25,
+							angle : 270,
+							color : 'red'
+					}
 				};
 
 		if (canvas.getContext){
 			drawCircle(clock.radius, clock.color);
 			drawCircle(clock.centerRadius, clock.centerColor);
 			drawNumbers();
-			drawHand(hands.hourRadius, hands.hourColor, 300);
-			drawHand(hands.minuteRadius, hands.minuteColor, 180);
+			drawHand(hands.hour.radius, hands.hour.color, hands.hour.angle);
+			drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
+			drawHandEnd();
 		}
 
 		function drawCircle(radius, color) {
@@ -55,13 +63,39 @@ $(document).ready(function () {
 		}
 
 		function drawHand(radius, color, angle) {
-			var coordinates = getCoordinates(radius, angle);
-			
+			var coordinates, hand;
+			coordinates = getCoordinates(radius, angle);
+
 			context.beginPath();
 			context.moveTo(clock.centerX, clock.centerY);
 			context.lineTo(coordinates[0], coordinates[1]);
 			context.strokeStyle = color;
 			context.stroke();
+
+
+		}
+
+		function drawHandEnd() {
+			var hand, hourCoord;
+			hand = new Image();
+			hand.src = "images/hand.png";
+
+			hourCoord = getCoordinates(hands.hour.radius, hands.hour.angle);
+			minuteCoord = getCoordinates(hands.minute.radius, hands.minute.angle);
+
+			hand.onload = function() {
+				context.beginPath();
+				context.save();
+				context.translate(hourCoord[0], hourCoord[1]);
+				context.rotate((hands.hour.angle + 90) * Math.PI/180);
+    			context.drawImage(this, -43, -120, 86, 120);
+    			context.restore();
+
+    			context.translate(minuteCoord[0], minuteCoord[1]);
+				context.rotate((hands.minute.angle + 90) * Math.PI/180);
+    			context.drawImage(this, -43, -120, 86, 120);
+
+  			};
 		}
 
 		function getCoordinates(radius, angle) {
