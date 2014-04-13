@@ -25,27 +25,42 @@ $(document).ready(function () {
 			};
 
 	if (canvas.getContext){
-		drawCircle(clock.radius, clock.color);
-		drawCircle(clock.centerRadius, clock.centerColor);
-		drawNumbers();
-		drawHand(hands.hour.radius, hands.hour.color, hands.hour.angle);
-		drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
+		drawClock();
+		setClock();
 	}
 
 	$('select#hours').on('change', setClock);
+	$('select#minutes').on('change', setClock);
 
-	function setClock(evt) {
-		var hour, angle;
-		hour = $(this).val();
-		angle = 270 + (hour * 30);
+	function drawClock() {
 		drawCircle(clock.radius, clock.color);
 		drawCircle(clock.centerRadius, clock.centerColor);
 		drawNumbers();
-
-		drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
-		drawHand(hands.hour.radius, hands.hour.color, angle);
 	}
 
+	function setClock(evt) {
+		var hour, minutes;
+
+		if (evt === undefined) {
+			drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
+			drawHand(hands.hour.radius, hands.hour.color, hands.hour.angle);
+			return;
+		}
+		if (evt !== undefined) {
+			if ($(evt.target).attr('id') === 'hours') {
+				hour = $(this).val();
+				hands.hour.angle = 270 + (hour * 30);
+			}
+			if ($(evt.target).attr('id') === 'minutes') {
+				minutes = $(this).val();
+				hands.minute.angle = 270 + (minutes * 6);
+			}
+			drawClock();
+			drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
+			drawHand(hands.hour.radius, hands.hour.color, hands.hour.angle);
+			return;
+		}
+	}
 
 
 	function drawCircle(radius, color) {
