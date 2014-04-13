@@ -32,7 +32,6 @@ $(document).ready(function () {
 			drawNumbers();
 			drawHand(hands.hour.radius, hands.hour.color, hands.hour.angle);
 			drawHand(hands.minute.radius, hands.minute.color, hands.minute.angle);
-			drawHandEnd();
 		}
 
 		function drawCircle(radius, color) {
@@ -65,6 +64,8 @@ $(document).ready(function () {
 		function drawHand(radius, color, angle) {
 			var coordinates, hand;
 			coordinates = getCoordinates(radius, angle);
+			hand = new Image();
+			hand.src = "images/hand.png";
 
 			context.beginPath();
 			context.moveTo(clock.centerX, clock.centerY);
@@ -72,30 +73,14 @@ $(document).ready(function () {
 			context.strokeStyle = color;
 			context.stroke();
 
-
-		}
-
-		function drawHandEnd() {
-			var hand, hourCoord;
-			hand = new Image();
-			hand.src = "images/hand.png";
-
-			hourCoord = getCoordinates(hands.hour.radius, hands.hour.angle);
-			minuteCoord = getCoordinates(hands.minute.radius, hands.minute.angle);
-
 			hand.onload = function() {
-				context.beginPath();
 				context.save();
-				context.translate(hourCoord[0], hourCoord[1]);
-				context.rotate((hands.hour.angle + 90) * Math.PI/180);
+				context.translate(coordinates[0], coordinates[1]);
+				context.rotate((angle + 90) * Math.PI/180);
     			context.drawImage(this, -43, -120, 86, 120);
     			context.restore();
+			}
 
-    			context.translate(minuteCoord[0], minuteCoord[1]);
-				context.rotate((hands.minute.angle + 90) * Math.PI/180);
-    			context.drawImage(this, -43, -120, 86, 120);
-
-  			};
 		}
 
 		function getCoordinates(radius, angle) {
