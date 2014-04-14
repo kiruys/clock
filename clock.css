@@ -1,0 +1,24 @@
+h1, label {
+	font-family: arial;
+}
+
+h1 {
+	text-align: center;
+}
+
+#choose-time {
+	margin-top: 15%;
+}
+
+.column {
+	width: 50%; 
+	float: left;
+}
+
+.form-row {
+	padding: 2% 20%;
+}
+
+.label-wrapper {
+	padding: 2% 0;
+}
