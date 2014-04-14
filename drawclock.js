@@ -43,18 +43,29 @@ $(document).ready(function () {
 
 	$('select#hours').on('change', setClock);
 	$('select#minutes').on('change', setClock);
-	$('#canvas_clock').on('click', moveHand);
+	//canvas.addEventListener('mousedown', moveHand);
+	canvas.addEventListener('mousemove', moveHand);
+	// $('#canvas_clock').on('mousedown', down);
+	// $('#canvas_clock').on('mouseup', moveHand);
 
-	function moveHand(e) {
-		var x;
-		var y;
-		if (e.pageX || e.pageY) { 
-			x = e.pageX;
-			y = e.pageY;
+	function down() {
+		console.log('down');
+	}
+
+	function up() {
+		console.log('up');
+	}
+
+	function moveHand(evt) {
+		evt.preventDefault();
+		var x, y;
+		if (evt.pageX || evt.pageY) { 
+			x = evt.pageX;
+			y = evt.pageY;
 		}
 		// else { 
-		// 	x = e.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-		// 	y = e.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
+		// 	x = evt.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
+		// 	y = evt.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
 		// } 
 		x -= canvas.offsetLeft;
 		y -= canvas.offsetTop;
@@ -62,12 +73,17 @@ $(document).ready(function () {
 		y *= 500/$('#canvas_clock').height();
 
 		if (x > hands.hour.area.left & x < hands.hour.area.right & y > hands.hour.area.top & y < hands.hour.area.bottom) {
-			alert('hourhand');
+			//alert('hourhand');
 		}
 		if (x > hands.minute.area.left & x < hands.minute.area.right & y > hands.minute.area.top & y < hands.minute.area.bottom) {
-			alert('minutehand');
+			//alert('minutehand');
 		}
 
+		else {
+			hands.hour.angle = getAngle(x,y);
+			drawClock();
+			setHands();
+		}
 	}	
 
 	function drawClock() {
@@ -166,6 +182,24 @@ $(document).ready(function () {
 		x = clock.centerX + radius * Math.cos(angle * (Math.PI /180));
 		y = clock.centerY + radius * Math.sin(angle * (Math.PI/180));
 		return [x, y];
+	}
+
+	function getAngle(xCoord, yCoord) {
+		var p1 = {
+			x: clock.centerX,
+			y: clock.centerY
+		};
+ 
+		var p2 = {
+			x: xCoord,
+			y: yCoord
+		};
+ 
+		// angle in radians
+		var angleRadians = Math.atan2(p2.y - p1.y, p2.x - p1.x);
+		 
+		// angle in degrees
+		return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
 	}
 
 });
