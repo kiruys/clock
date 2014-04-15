@@ -1,8 +1,9 @@
 $(document).ready(function () {
 
-	var canvas, context, clock, hands;	
+	var canvas, context, clock, hands, startTurn;	
 	canvas = document.getElementById("canvas_clock");
 	context = canvas.getContext('2d');
+	startTurn = false;
 
 	clock = {	color: 'yellow',
 				centerColor: 'black',
@@ -43,48 +44,56 @@ $(document).ready(function () {
 
 	$('select#hours').on('change', setClock);
 	$('select#minutes').on('change', setClock);
-	//canvas.addEventListener('mousedown', moveHand);
+	canvas.addEventListener('mousedown', turnOn);
 	canvas.addEventListener('mousemove', moveHand);
-	// $('#canvas_clock').on('mousedown', down);
-	// $('#canvas_clock').on('mouseup', moveHand);
+	canvas.addEventListener('mouseup', turnOff);
 
-	function down() {
-		console.log('down');
+
+	function turnOn(evt) {
+		if (startTurn === false) {
+			startTurn = true;
+		}
 	}
 
-	function up() {
-		console.log('up');
+	function turnOff() {
+		if (startTurn === true) {
+			startTurn = false;
+		}
 	}
 
 	function moveHand(evt) {
 		evt.preventDefault();
-		var x, y;
+		var x, y, hand;
+
+		if (startTurn === false) {
+			return;
+		}
+
 		if (evt.pageX || evt.pageY) { 
 			x = evt.pageX;
 			y = evt.pageY;
 		}
-		// else { 
-		// 	x = evt.clientX + document.body.scrollLeft + document.documentElement.scrollLeft; 
-		// 	y = evt.clientY + document.body.scrollTop + document.documentElement.scrollTop; 
-		// } 
+
 		x -= canvas.offsetLeft;
 		y -= canvas.offsetTop;
 		x *= 500/$('#canvas_clock').width();
 		y *= 500/$('#canvas_clock').height();
 
+		hand = matchClickCoords(x, y);
+
+		hands[hand].angle = getAngle(x,y);
+		drawClock();
+		setHands();
+	}
+
+	function matchClickCoords(x, y) {
 		if (x > hands.hour.area.left & x < hands.hour.area.right & y > hands.hour.area.top & y < hands.hour.area.bottom) {
-			//alert('hourhand');
+			return 'hour';
 		}
 		if (x > hands.minute.area.left & x < hands.minute.area.right & y > hands.minute.area.top & y < hands.minute.area.bottom) {
-			//alert('minutehand');
+			return 'minute';
 		}
-
-		else {
-			hands.hour.angle = getAngle(x,y);
-			drawClock();
-			setHands();
-		}
-	}	
+	}
 
 	function drawClock() {
 		drawCircle(clock.radius, clock.color);
