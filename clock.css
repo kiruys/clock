@@ -1,4 +1,4 @@
-h1, label {
+h1, h2, p, label {
 	font-family: arial;
 }
 
@@ -15,7 +15,7 @@ h1 {
 	float: left;
 }
 
-.form-row {
+.form-part {
 	padding: 2% 20%;
 }
 
