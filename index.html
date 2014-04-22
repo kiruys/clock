@@ -4,8 +4,10 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="clock.css">
 	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="jquery-ui-1.10.4.custom.min.js"></script>
 	<script type="text/javascript" src="drawclock.js"></script>
+	<script type="text/javascript" src="drawhands.js"></script>
+	<script type="text/javascript" src="changetime.js"></script>
+	<script type="text/javascript" src="readclock.js"></script>
 </head>
 	<body>
 		<div class="column">
@@ -40,7 +42,7 @@
 							<option value="7">7</option>
 							<option value="8">8</option>
 							<option value="9">9</option>
-							<option value="10">10</option>
+							<option value="10" selected="selected">10</option>
 							<option value="11">11</option>
 							<option value="12">12</option>
 						</select>
@@ -52,7 +54,7 @@
 						<select id="minutes">
 							<option value="0">0</option>
 							<option value="5">5</option>
-							<option value="10">10</option>
+							<option value="10" selected="selected">10</option>
 							<option value="15">15</option>
 							<option value="20">20</option>
 							<option value="25">25</option>
@@ -65,9 +67,6 @@
 						</select>
 					</div>
 				</div>
-				
-					
-			
 			</div>
 		</div>
 	</body>
