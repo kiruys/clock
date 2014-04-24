@@ -8,23 +8,23 @@ $(document).ready(function () {
 	clock = {	color: 'yellow',
 				centerColor: 'black',
 				radius: canvas.height / 2 * 0.9,
-				centerRadius: canvas.height * 0.01,
+				centerRadius: canvas.height * 0.05,
 				centerX: canvas.width / 2,
 				centerY: canvas.height / 2
 			};
 
 	hands = {	hour : {
-						radius : canvas.height / 2 * 0.15,
-						angle : 210,
+						radius : canvas.height / 2 * 0.40,
+						angle : 220,
 						color : 'green', 
 						extra : false
 					},
 				minute : {
-						radius : canvas.height / 2 * 0.30,
+						radius : canvas.height / 2 * 0.60,
 						angle : 330,
 						color : 'red',
 					},
-				lineWidth : 5,
+				lineWidth : 20,
 				image : {
 							url : "images/hand.png",
 							width : 60,
@@ -39,9 +39,7 @@ $(document).ready(function () {
 			};
 	
 	if (canvas.getContext){
-
 		drawClock();
-
 	}
 
 });

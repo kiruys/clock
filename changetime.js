@@ -71,25 +71,34 @@ $(document).ready(function () {
 	}
 
 	function moveHand(evt) {
-		var coords, minutes;
+		var coords, newAngle = 0;
 		if (hands.on === false) {
 			return;
 		}
 
 		if (hands.active === 'hour') {
 			coords = getClickCoords(evt);
-			hands.hour.angle = getAngle(coords.x, coords.y);
-			drawClock();
-			setHands();
+			newAngle = getAngle(coords.x, coords.y);
+			if (newAngle !== hands.hour.angle) {
+				hands.hour.angle = newAngle;
+				drawClock();
+				setHands();
+				return;
+			}
+
 		}
 
 		if (hands.active === 'minute') {
 			coords = getClickCoords(evt);
-			hands.minute.angle = getAngle(coords.x, coords.y);
-			//minutes = getMinutes(resetAngle(hands.minute.angle));
-			//adjustHourAngleToMinuteAngle(minutes);
-			drawClock();
-			setHands();
+			newAngle = resetAngle(getAngle(coords.x, coords.y));
+			if (newAngle !== hands.minute.angle) {
+				hands.minute.angle = newAngle;
+				hands.hour.angle = adjustHourAngleToMinuteAngle();
+				drawClock();
+				setHands();
+				return;
+			}
+
 		}
 	}
 
@@ -108,7 +117,7 @@ $(document).ready(function () {
 		};
 		// angle in radians: var angleRadians = Math.atan2(p2.y - p1.y, p2.x - p1.x);
 		// angle in degrees:
-		return Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI;
+		return Math.floor(Math.atan2(p2.y - p1.y, p2.x - p1.x) * 180 / Math.PI);
 	}
 
 	function turnOff() {
@@ -118,22 +127,27 @@ $(document).ready(function () {
 		}
 	}
 
-	function adjustHourAngleToMinuteAngle(minutes) {
-		if (hands.hour.extra === false) {
+	function adjustHourAngleToMinuteAngle() {
+		var adjustedAngle, minutes;
+		minutes = getMinutes(resetAngle(hands.minute.angle));
+		if (minutes > 55 & hands.hour.extra === false) {
+			console.log('aan');
 			hands.hour.extra = true;
-			hands.hour.angle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
-			return;
 		}
-		if (hands.hour.extra === true & minutes === 0) {
+		if (minutes < 5 & minutes > 0 & hands.hour.extra === true) {
+			console.log('uit');
 			hands.hour.extra = false;
-			hands.hour.angle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30);
-			return;
 		}
-		if (hands.hour.extra === true) {
-			hands.hour.angle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
-			return;
-		}
-		
+		// if (hands.hour.extra === false) {
+			adjustedAngle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
+			return adjustedAngle;	
+		// }
+		// if (hands.hour.extra === true) {
+		// 	adjustedAngle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30);
+		// 	hands.hour.extra = false;
+		// 	return adjustedAngle;
+		// }
+
 	}
 
 });
