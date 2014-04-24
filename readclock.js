@@ -53,6 +53,14 @@ function resetAngle(angle) {
  *
  */
 function getMinutes(minuteAngle) {
-	var angle = resetAngle(minuteAngle - 270);
-	return Math.floor(angle/6);
+	var angle, minutes;
+	angle = resetAngle(minuteAngle - 270);
+	minutes = Math.floor(angle/6);
+	
+	if (minutes < 60) {
+		return minutes;
+	}
+	if (minutes === 60) {
+		return 0;
+	}
 }

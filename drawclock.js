@@ -23,6 +23,7 @@ $(document).ready(function () {
 						radius : canvas.height / 2 * 0.60,
 						angle : 330,
 						color : 'red',
+						oldAngle : 330
 					},
 				lineWidth : 20,
 				image : {
@@ -30,7 +31,9 @@ $(document).ready(function () {
 							width : 60,
 							height : 90
 				},
-				on : false
+				on : false,
+				direction : undefined,			//true : later, false: earlier
+				oldDirection : undefined
 			};
 
 	number = { 	radius : canvas.height / 2 * 0.75,

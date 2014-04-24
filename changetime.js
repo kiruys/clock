@@ -93,6 +93,7 @@ $(document).ready(function () {
 			newAngle = resetAngle(getAngle(coords.x, coords.y));
 			if (newAngle !== hands.minute.angle) {
 				hands.minute.angle = newAngle;
+				getDirection();
 				hands.hour.angle = adjustHourAngleToMinuteAngle();
 				drawClock();
 				setHands();
@@ -127,27 +128,40 @@ $(document).ready(function () {
 		}
 	}
 
+	function getDirection() {
+		if (hands.minute.angle < 210 | hands.minute.angle > 330) {
+			hands.direction = undefined;
+			return;
+		}
+		if (hands.minute.angle > hands.minute.oldAngle) {
+			hands.direction = true;
+			return;
+		}
+		if (hands.minute.angle < hands.minute.oldAngle) {
+			hands.direction = false;
+			return;
+		}
+
+	}
+
 	function adjustHourAngleToMinuteAngle() {
 		var adjustedAngle, minutes;
 		minutes = getMinutes(resetAngle(hands.minute.angle));
-		if (minutes > 55 & hands.hour.extra === false) {
-			console.log('aan');
-			hands.hour.extra = true;
-		}
-		if (minutes < 5 & minutes > 0 & hands.hour.extra === true) {
-			console.log('uit');
-			hands.hour.extra = false;
-		}
-		// if (hands.hour.extra === false) {
-			adjustedAngle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
-			return adjustedAngle;	
-		// }
-		// if (hands.hour.extra === true) {
-		// 	adjustedAngle = resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30);
-		// 	hands.hour.extra = false;
-		// 	return adjustedAngle;
-		// }
 
+		if (hands.direction === true & hands.minute.oldAngle < 270 & hands.minute.angle >= 270) {
+			hands.minute.oldAngle = hands.minute.angle;
+			return resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30 + (1/2 * minutes));
+		}
+
+		if (hands.direction === false & hands.minute.angle < 270 & hands.minute.oldAngle > 270) {
+			hands.minute.oldAngle = hands.minute.angle;
+			return resetAngle((Math.floor(hands.hour.angle/30) * 30) - 30 + (1/2 * minutes));
+		}
+
+		if (hands.direction === undefined | hands.direction === true | hands.direction === false) {
+			hands.minute.oldAngle = hands.minute.angle;
+			return resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
+		}
 	}
 
 });
