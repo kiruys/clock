@@ -51,8 +51,8 @@ $(document).ready(function () {
 
 		x -= canvas.offsetLeft;
 		y -= canvas.offsetTop;
-		x *= 500/$('#canvas_clock').width();
-		y *= 500/$('#canvas_clock').height();
+		x *= 500/$('#canvas-clock').width();
+		y *= 500/$('#canvas-clock').height();
 
 		return {x: x, y: y};
 	}
@@ -137,19 +137,6 @@ $(document).ready(function () {
 			hands.direction = false;
 			return;
 		}
-		// if (hands.minute.angle = hands.minute.oldAngle) {
-		// 	hands.direction = undefined;
-		// 	return;
-		// }
-		// if (hands.minute.angle > hands.minute.oldAngle) {
-		// 	hands.direction = true;
-		// 	return;
-		// }
-		// if (hands.minute.angle < hands.minute.oldAngle) {
-		// 	hands.direction = false;
-		// 	return;
-		// }
-
 
 	}
 

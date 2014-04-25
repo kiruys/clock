@@ -2,7 +2,7 @@ var canvas, context, clock, hands, number;
 
 $(document).ready(function () {
 
-	canvas = document.getElementById("canvas_clock");
+	canvas = document.getElementById("canvas-clock");
 	context = canvas.getContext('2d');
 
 	clock = {	color: 'yellow',

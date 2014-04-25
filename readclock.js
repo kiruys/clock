@@ -16,21 +16,6 @@ $(document).ready(function () {
 		$('#clock-time').text(getHour(hourAngle) + ' uur en ' + Math.floor(getMinutes(minuteAngle)) + ' minuten');
 	}
 	
-	/**
-	 * getHour returns the hour, rounded off to full hours based on the angle of the hourhand.
-	 */
-	function getHour(hourAngle) {
-		var angle, hour;
-		angle = resetAngle(hourAngle-270);
-		hour = Math.floor(angle/30);
-		if (hour > 0) {
-			return hour;
-		}
-		if (hour === 0) {
-			return 12;
-		}
-	}
-
 });
 
 /**
@@ -62,5 +47,20 @@ function getMinutes(minuteAngle) {
 	}
 	if (minutes === 60) {
 		return 0;
+	}
+}
+
+/**
+ * getHour returns the hour, rounded off to full hours based on the angle of the hourhand.
+ */
+function getHour(hourAngle) {
+	var angle, hour;
+	angle = resetAngle(hourAngle-270);
+	hour = Math.floor(angle/30);
+	if (hour > 0) {
+		return hour;
+	}
+	if (hour === 0) {
+		return 12;
 	}
 }

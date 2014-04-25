@@ -6,8 +6,16 @@ h1 {
 	text-align: center;
 }
 
+section {
+	padding: 5% 5% 0 5%;
+}
+
+select {
+	margin-bottom: 15%;
+}
+
 #choose-time {
-	margin-top: 15%;
+	margin-top: 5%;
 }
 
 .column {
@@ -15,10 +23,13 @@ h1 {
 	float: left;
 }
 
-.form-part {
-	padding: 2% 10% 2% 20%;
-}
-
 .label-wrapper {
 	padding: 2% 0;
 }
+
+#canvas_zebra {
+	border: 1px dotted;
+}
+
+
+
