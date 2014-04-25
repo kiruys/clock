@@ -13,7 +13,7 @@ $(document).ready(function () {
 		var hourAngle, minuteAngle;
 		hourAngle = resetAngle(hands.hour.angle);
 		minuteAngle = resetAngle(hands.minute.angle);
-		$('#clock-time').text(getHour(hourAngle) + ' uur en ' + getMinutes(minuteAngle) + ' minuten');
+		$('#clock-time').text(getHour(hourAngle) + ' uur en ' + Math.floor(getMinutes(minuteAngle)) + ' minuten');
 	}
 	
 	/**
@@ -55,7 +55,7 @@ function resetAngle(angle) {
 function getMinutes(minuteAngle) {
 	var angle, minutes;
 	angle = resetAngle(minuteAngle - 270);
-	minutes = Math.floor(angle/6);
+	minutes = Math.floor(angle/6 *100)/100;
 	
 	if (minutes < 60) {
 		return minutes;

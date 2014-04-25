@@ -35,7 +35,6 @@ function getHandArea(radius, angle) {
  * at the end of the hand, an arrow is drawn.
  */
 function drawHand(radius, color, angle) {
-
 	var coordinates;
 	coordinates = getCoordinates(radius, angle);
 

@@ -15,7 +15,7 @@ $(document).ready(function () {
 
 	hands = {	hour : {
 						radius : canvas.height / 2 * 0.40,
-						angle : 220,
+						angle : 213,
 						color : 'green', 
 						extra : false
 					},
@@ -32,8 +32,7 @@ $(document).ready(function () {
 							height : 90
 				},
 				on : false,
-				direction : undefined,			//true : later, false: earlier
-				oldDirection : undefined
+				direction : undefined,		//true : later, false: earlier
 			};
 
 	number = { 	radius : canvas.height / 2 * 0.75,
@@ -58,7 +57,7 @@ function drawClock() {
 
 	function drawCircle(radius, color) {
 		context.beginPath();
-		context.arc(clock.centerX, clock.centerY, radius, 0, 2 * Math.PI, false);
+		context.arc(clock.centerX, clock.centerY, radius, 0, 2 * Math.PI, true);
 		context.fillStyle = color;
 		context.fill();
 		context.lineWidth = 4;

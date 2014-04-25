@@ -129,10 +129,6 @@ $(document).ready(function () {
 	}
 
 	function getDirection() {
-		if (hands.minute.angle < 210 | hands.minute.angle > 330) {
-			hands.direction = undefined;
-			return;
-		}
 		if (hands.minute.angle > hands.minute.oldAngle) {
 			hands.direction = true;
 			return;
@@ -141,27 +137,39 @@ $(document).ready(function () {
 			hands.direction = false;
 			return;
 		}
+		// if (hands.minute.angle = hands.minute.oldAngle) {
+		// 	hands.direction = undefined;
+		// 	return;
+		// }
+		// if (hands.minute.angle > hands.minute.oldAngle) {
+		// 	hands.direction = true;
+		// 	return;
+		// }
+		// if (hands.minute.angle < hands.minute.oldAngle) {
+		// 	hands.direction = false;
+		// 	return;
+		// }
+
 
 	}
 
 	function adjustHourAngleToMinuteAngle() {
-		var adjustedAngle, minutes;
+		var adjustedAngle, minutes, oldMinutes;
 		minutes = getMinutes(resetAngle(hands.minute.angle));
+		oldMinutes = getMinutes(resetAngle(hands.minute.oldAngle));
 
-		if (hands.direction === true & hands.minute.oldAngle < 270 & hands.minute.angle >= 270) {
+		if (hands.direction === true & oldMinutes > 50 & minutes < 10) {
 			hands.minute.oldAngle = hands.minute.angle;
 			return resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30 + (1/2 * minutes));
 		}
 
-		if (hands.direction === false & hands.minute.angle < 270 & hands.minute.oldAngle > 270) {
+		if (hands.direction === false & oldMinutes < 10 & minutes > 50) {
 			hands.minute.oldAngle = hands.minute.angle;
 			return resetAngle((Math.floor(hands.hour.angle/30) * 30) - 30 + (1/2 * minutes));
 		}
 
-		if (hands.direction === undefined | hands.direction === true | hands.direction === false) {
-			hands.minute.oldAngle = hands.minute.angle;
-			return resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
-		}
+		hands.minute.oldAngle = hands.minute.angle;
+		return resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
 	}
 
 });
