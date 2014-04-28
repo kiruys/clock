@@ -1,9 +1,16 @@
+body {
+	background-color: #D1E0E0;
+}
+h1, h2 {
+	color: #FF4719;
+}
+
 h1, h2, p, label {
 	font-family: arial;
 }
 
 h1 {
-	text-align: center;
+	text-align: left;
 }
 
 section {

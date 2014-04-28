@@ -42,17 +42,23 @@ function drawHand(radius, color, angle) {
 	context.lineWidth = hands.lineWidth;
 	context.lineCap = 'round';
 	context.strokeStyle = color;
+
 	
 	context.moveTo(clock.centerX, clock.centerY);
 	context.lineTo(coordinates[0], coordinates[1]);
+	context.stroke();
 	
 	context.save();
+	//context.beginPath();
+
 	context.translate(coordinates[0], coordinates[1]);
 	context.rotate((angle + 90) * Math.PI/180);
-	context.lineTo(25, 45);
-	context.lineTo(-25, 45);
-	context.lineTo(0, 0);
-	context.lineJoin='round';
+	context.lineTo(28, 0);
+	context.lineTo(0, -45);
+	context.lineTo(-28, 0);
+	context.lineTo(0,0);
+	context.fillStyle = color;
+	context.fill();
 	context.stroke();
 	context.restore();
 
