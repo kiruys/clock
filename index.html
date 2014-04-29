@@ -8,24 +8,50 @@
 	<script type="text/javascript" src="js/drawhands.js"></script>
 	<script type="text/javascript" src="js/changetime.js"></script>
 	<script type="text/javascript" src="js/readclock.js"></script>
+	<script type="text/javascript" src="js/menu.js"></script>
 </head>
 	<body>
 		<div class="menu-wrapper">
-			<a href="">Lees de klok</a>
-			<a href="" class="right-menu-item">Zet de klok</a>
+			<a href="" data-link="read">Lees de klok</a>
+			<a href="" class="right-menu-item" data-link="set">Zet de klok</a>
 			<div class="canvas-wrapper">
 				<canvas id="canvas-clock" width="500" height="500" style="width:100%;height:100%;">
 				Canvas tag not supported
 				</canvas>
 			</div>
 			<div class="menu-options">
-				<a href="">Kleur de klok</a>
-				<a href="" class="right-menu-item">24 uur klok</a>
+				<a href="" data-link="color">Kleur de klok</a>
+				<a href="" class="right-menu-item" data-link="settings">Instellingen</a>
 			</div>
 		</div>
-		<section>
+		<section id="home" class="menu-item">
 			<h2>De klok staat nu op: </h2>
 			<p id="clock-time">9 uur en 0 minuten</p>
 		</section>
+		<section id="set" class="hide menu-item">
+			<h2>Beweeg de wijzers, zet de klok op:</h2>
+			<p id="random-time">9 uur en 0 minuten</p>
+			<button id="check-time" type="button">Check de tijd</button>
+			<button id="new-time" type="button">Nieuwe tijd</button>
+		</section>
+		<section id="read" class="hide menu-item">
+			<h2>Hoe laat is het op de klok?</h2>
+			<div class="column">
+				<div class="label-wrapper">
+					<label for="hour">Typ het uur: </label>
+				</div>
+				<input id="hour" type="number" maxlength="2"></input>
+			</div>
+			<div class="column">
+				<div class="label-wrapper">
+					<label for="minute">Typ de minuten:</label>
+				</div>
+				<input id="minute" type="number" maxlength="2"></input>
+			</div>
+			<div class="column">
+				<button id="check-input" type="button">GA!</button>
+			</div>
+		</section>
+
 	</body>
 </html>

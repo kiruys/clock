@@ -140,23 +140,23 @@ $(document).ready(function () {
 
 	}
 
-	function adjustHourAngleToMinuteAngle() {
-		var adjustedAngle, minutes, oldMinutes;
-		minutes = getMinutes(resetAngle(hands.minute.angle));
-		oldMinutes = getMinutes(resetAngle(hands.minute.oldAngle));
+});
 
-		if (hands.direction === true & oldMinutes > 50 & minutes < 10) {
-			hands.minute.oldAngle = hands.minute.angle;
-			return resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30 + (1/2 * minutes));
-		}
+function adjustHourAngleToMinuteAngle() {
+	var adjustedAngle, minutes, oldMinutes;
+	minutes = getMinutes(resetAngle(hands.minute.angle));
+	oldMinutes = getMinutes(resetAngle(hands.minute.oldAngle));
 
-		if (hands.direction === false & oldMinutes < 10 & minutes > 50) {
-			hands.minute.oldAngle = hands.minute.angle;
-			return resetAngle((Math.floor(hands.hour.angle/30) * 30) - 30 + (1/2 * minutes));
-		}
-
+	if (hands.direction === true & oldMinutes > 50 & minutes < 10) {
 		hands.minute.oldAngle = hands.minute.angle;
-		return resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
+		return resetAngle((Math.floor(hands.hour.angle/30) * 30) + 30 + (1/2 * minutes));
 	}
 
-});
+	if (hands.direction === false & oldMinutes < 10 & minutes > 50) {
+		hands.minute.oldAngle = hands.minute.angle;
+		return resetAngle((Math.floor(hands.hour.angle/30) * 30) - 30 + (1/2 * minutes));
+	}
+
+	hands.minute.oldAngle = hands.minute.angle;
+	return resetAngle((Math.floor(hands.hour.angle/30) * 30) + (1/2 * minutes));
+}

@@ -2,9 +2,19 @@
 
 $(document).ready(function () {
 	
+	generateHandAngles();
 	setHands();
 
 });
+
+function generateHandAngles() {
+	var minutes;
+	hands.hour.angle = Math.floor(((Math.random()*360)+1)/30) * 30;
+	hands.minute.angle = Math.floor(((Math.random()*360)+1)/6) * 6;
+	minutes = getMinutes(resetAngle(hands.minute.angle));
+	hands.hour.angle += (1/2 * minutes);
+	return;
+}
 
 /**
  * draws the arms and hands of the clock based on the hands properties.

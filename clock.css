@@ -21,7 +21,7 @@ h1, h2 {
 	color: #FF4719;
 }
 
-h1, h2, p, label, a {
+h1, h2, p, label, a, input {
 	font-family: arial;
 }
 
@@ -42,7 +42,7 @@ select {
 }
 
 .column {
-	width: 50%; 
+	width: 20%; 
 	float: left;
 }
 
@@ -58,7 +58,7 @@ select {
 	max-width: 600px;
 }
 
-a {
+a, button {
 	padding: 10px;
 	float: left;
 	font-size: 1.4em;
@@ -69,12 +69,29 @@ a {
 	text-decoration: none;
 }
 
+button {
+	background: #85ADAD;
+	margin: 18px 15px 0 0;
+	color: #8414CF;
+	cursor: pointer;
+}
+
 .right-menu-item {
 	float: right;
 }
 
 .hide {
 	display: none;
+}
+
+#random-time, #clock-time, label {
+	color: #8414CF;
+	font-size: 1.2em;
+}
+
+input {
+	font-size: 1.4em;
+	width: 40%;
 }
 
 
