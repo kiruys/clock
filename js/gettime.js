@@ -15,15 +15,15 @@ $(document).ready(function () {
 						}
 			};
 
-	balloonCanvas = document.getElementById("canvas-balloon");
-	balloonCxt = balloonCanvas.getContext('2d');
+	// balloonCanvas = document.getElementById("canvas-balloon");
+	// balloonCxt = balloonCanvas.getContext('2d');
 
 	generateTime();
 
-	if (balloonCanvas.getContext){
-		drawBalloon();
+	// if (balloonCanvas.getContext){
+	// 	drawBalloon();
 		
-	}
+	// }
 
 	
 
@@ -43,10 +43,14 @@ $(document).ready(function () {
 		clockHour = getHour(hourAngle);
 		clockMinutes = Math.round(getMinutes(minuteAngle));
 		if (clockMinutes < (randomTime.minutes + 1) & clockMinutes > randomTime.minutes -1) {
-			drawText('positive');
+			
+			alert('Goed zo!');
+			generateTime();
+			//drawText('positive');
 			return;
 		}
-		drawText('negative');
+		alert('Probeer het nog eens');
+		//drawText('negative');
 		return;
 	}
 
