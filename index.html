@@ -3,99 +3,29 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="clock.css">
-	<script type="text/javascript" src="jquery.js"></script>
-	<script type="text/javascript" src="drawclock.js"></script>
-	<script type="text/javascript" src="drawhands.js"></script>
-	<script type="text/javascript" src="changetime.js"></script>
-	<script type="text/javascript" src="readclock.js"></script>
-	<script type="text/javascript" src="gettime.js"></script>
+	<script type="text/javascript" src="js/jquery.js"></script>
+	<script type="text/javascript" src="js/drawclock.js"></script>
+	<script type="text/javascript" src="js/drawhands.js"></script>
+	<script type="text/javascript" src="js/changetime.js"></script>
+	<script type="text/javascript" src="js/readclock.js"></script>
 </head>
 	<body>
 		<div class="menu-wrapper">
-			<div class="column">
-				<h1>Wat wil je doen?</h1>
-				<div id="choose-time">
-					<section>
-						<h2>De klok staat nu op: </h2>
-						<p id="clock-time">9 uur en 0 minuten</p>
-					</section>
-
-					<section>
-						<h2>Kies een tijd</h2>
-						<div class="column">
-							<div class="label-wrapper">
-								<label for="hours">Kies het uur: </label>
-							</div>
-							<select id="hours">
-								<option value="1">1</option>
-								<option value="2">2</option>
-								<option value="3">3</option>
-								<option value="4">4</option>
-								<option value="5">5</option>
-								<option value="6">6</option>
-								<option value="7">7</option>
-								<option value="8">8</option>
-								<option value="9">9</option>
-								<option value="10" selected="selected">10</option>
-								<option value="11">11</option>
-								<option value="12">12</option>
-								<option value="1">13</option>
-								<option value="2">14</option>
-								<option value="3">15</option>
-								<option value="4">16</option>
-								<option value="5">17</option>
-								<option value="6">18</option>
-								<option value="7">19</option>
-								<option value="8">20</option>
-								<option value="9">21</option>
-								<option value="10">22</option>
-								<option value="11">23</option>
-								<option value="12">24</option>
-							</select>
-						</div>
-						<div class="column">
-							<div class="label-wrapper">
-								<label for="minutes">Kies de minuten:</label>
-							</div>
-							<select id="minutes">
-								<option value="0">0</option>
-								<option value="5">5</option>
-								<option value="10" selected="selected">10</option>
-								<option value="15">15</option>
-								<option value="20">20</option>
-								<option value="25">25</option>
-								<option value="30">30</option>
-								<option value="35">35</option>
-								<option value="40">40</option>
-								<option value="45">45</option>
-								<option value="50">50</option>
-								<option value="55">55</option>
-							</select>
-						</div>
-					</section>
-
-					<section>
-						<h2>Beweeg de wijzers, zet de klok op:</h2>
-						<div style="width:100%;float:left;">
-							<p id="random-time">9 uur en 0 minuten</p>
-							<button id="check-time" type="button">Check de tijd</button>
-							<button id="new-time" type="button">Nieuwe tijd</button>
-						</div>
-						<div class="column">
-							<img src="images/zebra.jpg" alt="zebra" height="100%" width="100%">
-						</div>
-						<div class="column">
-							<canvas id="canvas-balloon" width="450" height="250" style="width:100%; height:100%"></canvas>
-						</div>
-					</section>	
-				</div>
-			</div>
-			<div class="column">
-				<h1>Speel met de klok</h1>
-				<canvas id="canvas-clock" width="500" height="500" style="width:100%; height:100%">
+			<a href="">Lees de klok</a>
+			<a href="" class="right-menu-item">Zet de klok</a>
+			<div class="canvas-wrapper">
+				<canvas id="canvas-clock" width="500" height="500" style="width:100%;height:100%;">
 				Canvas tag not supported
 				</canvas>
 			</div>
+			<div class="menu-options">
+				<a href="">Kleur de klok</a>
+				<a href="" class="right-menu-item">24 uur klok</a>
+			</div>
 		</div>
+		<section>
+			<h2>De klok staat nu op: </h2>
+			<p id="clock-time">9 uur en 0 minuten</p>
+		</section>
 	</body>
 </html>

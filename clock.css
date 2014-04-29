@@ -1,20 +1,36 @@
 body {
 	background-color: #D1E0E0;
 }
+.menu-wrapper {
+	height: 100%;
+	max-width: 800px;
+	background-color: #85ADAD;
+	padding: 10px;
+}
+.canvas-wrapper {
+	width:80%;
+	text-align: center;
+	margin: 0 10%;
+}
+.menu-options {
+	background-color: #85ADAD;
+	margin-bottom: 45px;
+}
+
 h1, h2 {
 	color: #FF4719;
 }
 
-h1, h2, p, label {
+h1, h2, p, label, a {
 	font-family: arial;
 }
 
 h1 {
-	text-align: left;
+	text-align: center;
 }
 
 section {
-	padding: 5% 5% 0 5%;
+	padding: 15px;
 }
 
 select {
@@ -34,8 +50,31 @@ select {
 	padding: 2% 0;
 }
 
-#canvas_zebra {
+#canvas-zebra {
 	border: 1px dotted;
+}
+
+#canvas-clock {
+	max-width: 600px;
+}
+
+a {
+	padding: 10px;
+	float: left;
+	font-size: 1.4em;
+	font-weight: bold;
+	background: #D1E0E0;
+	color: #FF4719;
+	border: none;
+	text-decoration: none;
+}
+
+.right-menu-item {
+	float: right;
+}
+
+.hide {
+	display: none;
 }
 
 

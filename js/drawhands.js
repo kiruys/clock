@@ -1,7 +1,7 @@
 
 
 $(document).ready(function () {
-
+	
 	setHands();
 
 });
@@ -42,14 +42,10 @@ function drawHand(radius, color, angle) {
 	context.lineWidth = hands.lineWidth;
 	context.lineCap = 'round';
 	context.strokeStyle = color;
-
 	
 	context.moveTo(clock.centerX, clock.centerY);
 	context.lineTo(coordinates[0], coordinates[1]);
-	context.stroke();
-	
 	context.save();
-	//context.beginPath();
 
 	context.translate(coordinates[0], coordinates[1]);
 	context.rotate((angle + 90) * Math.PI/180);
@@ -61,6 +57,7 @@ function drawHand(radius, color, angle) {
 	context.fill();
 	context.stroke();
 	context.restore();
+	context.closePath();
 
 	// hand = new Image();
 	// hand.src = hands.image.url;
