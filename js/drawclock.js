@@ -46,6 +46,15 @@ $(document).ready(function () {
 		drawClock();
 	}
 
+	$('button.color-choice').on('click', changeColor);
+
+	function changeColor(evt) {
+		clock.color = $(evt.target).css('background-color');
+		console.log(color);
+		drawClock();
+		setHands();
+	}
+
 });
 
 /**
@@ -58,7 +67,6 @@ function drawClock() {
 	drawCircle(clock.centerRadius, clock.centerColor);
 	drawNumbers();
 	drawMinuteLines();
-	drawCircle(4, 'black');
 
 	function colorBackground(color) {
 		context.beginPath();
@@ -91,6 +99,7 @@ function drawClock() {
 			number.angle += 30;
 		}
 	}
+	
 	function drawMinuteLines() {
 		var coords;
 

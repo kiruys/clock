@@ -31,6 +31,7 @@ h1 {
 
 section {
 	padding: 15px;
+	max-width: 800px;
 }
 
 select {
@@ -84,7 +85,7 @@ button {
 	display: none;
 }
 
-#random-time, #clock-time, label {
+#random-time, #clock-time, label, p {
 	color: #8414CF;
 	font-size: 1.2em;
 }
@@ -94,5 +95,28 @@ input {
 	width: 40%;
 }
 
+.choose-color {
+	width: 33.3%;
+	float: left;
+}
 
+button.color-choice {
+	width: 15%;
+	height: 35px;
+}
 
+button#pink {
+	background: #FFCCCC;
+}
+
+button#green {
+	background: #66FF33;
+}
+
+button#orange {
+	background: #FF9900;
+}
+
+button#blue {
+	background: #33CCFF;
+}
