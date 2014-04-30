@@ -103,20 +103,7 @@ input {
 button.color-choice {
 	width: 15%;
 	height: 35px;
+	margin-bottom: 18px;
 }
 
-button#pink {
-	background: #FFCCCC;
-}
 
-button#green {
-	background: #66FF33;
-}
-
-button#orange {
-	background: #FF9900;
-}
-
-button#blue {
-	background: #33CCFF;
-}

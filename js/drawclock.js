@@ -24,7 +24,7 @@ $(document).ready(function () {
 				minute : {
 						radius : canvas.height / 2 * 0.43,
 						angle : 330,
-						color : 'red',
+						color : '#E60000',
 						oldAngle : 330
 					},
 				lineWidth : 18,
@@ -49,8 +49,18 @@ $(document).ready(function () {
 	$('button.color-choice').on('click', changeColor);
 
 	function changeColor(evt) {
-		clock.color = $(evt.target).css('background-color');
-		console.log(color);
+		var $clockPart, partName;
+		$clockPart = $(evt.target).closest('div[data-color]');
+		partName = $clockPart.data('color');
+		if (partName === 'clock') {
+			clock.color = $(evt.target).css('background-color');
+		}
+		if (partName === 'hands.minute') {
+			hands.minute.color = $(evt.target).css('background-color');
+		}
+		if (partName === 'hands.hour') {
+			hands.hour.color = $(evt.target).css('background-color');
+		}
 		drawClock();
 		setHands();
 	}
@@ -99,7 +109,7 @@ function drawClock() {
 			number.angle += 30;
 		}
 	}
-	
+
 	function drawMinuteLines() {
 		var coords;
 

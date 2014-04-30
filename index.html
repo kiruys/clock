@@ -3,6 +3,8 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 	<link rel="stylesheet" type="text/css" href="clock.css">
+	<link rel="stylesheet" type="text/css" href="colors.css">
+
 	<script type="text/javascript" src="js/jquery.js"></script>
 	<script type="text/javascript" src="js/drawclock.js"></script>
 	<script type="text/javascript" src="js/drawhands.js"></script>
@@ -55,18 +57,26 @@
 		</section>
 		<section id="color" class="hide menu-item">
 			<h2>Kies de kleuren van de klok</h2>
-				<div class="choose-color">
+				<div data-color="clock" class="choose-color">
 					<p>Kies de kleur van de wijzerplaat</p>
 					<button id="pink" class="color-choice" type="button"></button>
-					<button id="green" class="color-choice" type="button"></button>
+					<button id="lightgreen" class="color-choice" type="button"></button>
 					<button id="orange" class="color-choice" type="button"></button>
-					<button id="blue" class="color-choice" type="button"></button>
+					<button id="yellow" class="color-choice" type="button"></button>
 				</div>
-				<div class="choose-color">
+				<div data-color="hands.minute" class="choose-color">
 					<p>Kies de kleur van de minutenwijzer</p>
+					<button id="white" class="color-choice" type="button"></button>
+					<button id="purple" class="color-choice" type="button"></button>
+					<button id="blue" class="color-choice" type="button"></button>
+					<button id="red" class="color-choice" type="button"></button>
 				</div>
-				<div class="choose-color">
+				<div data-color="hands.hour" class="choose-color">
 					<p>Kies de kleur van de urenwijzer</p>
+					<button id="lightyellow" class="color-choice" type="button"></button>
+					<button id="gray" class="color-choice" type="button"></button>
+					<button id="darkblue" class="color-choice" type="button"></button>
+					<button id="green" class="color-choice" type="button"></button>
 				</div>
 		</section>
 
