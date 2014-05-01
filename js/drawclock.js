@@ -1,6 +1,10 @@
-var canvas, context, clock, hands, number;
+var canvas, context, clock, hands, number, level;
+
+//localStorage.clear();
 
 $(document).ready(function () {
+
+	
 
 	canvas = document.getElementById("canvas-clock");
 	context = canvas.getContext('2d');

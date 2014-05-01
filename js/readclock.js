@@ -12,10 +12,19 @@ $(document).ready(function () {
 	 * presents the time on the clock in words on the screen. 
 	 */
 	function readClock() {
-		var hourAngle, minuteAngle;
+		var hourAngle, minuteAngle, minutes;
 		hourAngle = resetAngle(hands.hour.angle);
 		minuteAngle = resetAngle(hands.minute.angle);
-		$('#clock-time').text(getHour(hourAngle) + ' uur en ' + Math.floor(getMinutes(minuteAngle)) + ' minuten');
+		minutes = Math.floor(getMinutes(minuteAngle));
+		if (minutes > 0) {
+			$('#clock-time').text(getHour(hourAngle) + ' uur en ' + minutes + ' minuten');
+			return;
+		}
+		if (minutes === 0) {
+			$('#clock-time').text(getHour(hourAngle) + ' uur');
+			return;
+		}
+		
 	}
 
 	function matchInputWithClock() {

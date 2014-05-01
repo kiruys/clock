@@ -16,6 +16,9 @@ body {
 	background-color: #85ADAD;
 	margin-bottom: 45px;
 }
+.active {
+	border: 3px solid #FF4719;
+}
 
 h1, h2 {
 	color: #FF4719;
@@ -93,6 +96,7 @@ button {
 input {
 	font-size: 1.4em;
 	width: 40%;
+	margin-bottom: 18px;
 }
 
 .choose-color {
@@ -104,6 +108,14 @@ button.color-choice {
 	width: 15%;
 	height: 35px;
 	margin-bottom: 18px;
+}
+
+button.check, button.level {
+	margin-bottom: 18px;
+}
+
+.active-level {
+	border: 3px solid #8414CF;
 }
 
 

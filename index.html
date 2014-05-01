@@ -34,8 +34,8 @@
 		<section id="set" class="hide menu-item">
 			<h2>Beweeg de wijzers, zet de klok op:</h2>
 			<p id="random-time">9 uur en 0 minuten</p>
-			<button id="check-time" type="button">Check de tijd</button>
-			<button id="new-time" type="button">Nieuwe tijd</button>
+			<button id="check-time" type="button" class="check">Check de tijd</button>
+			<button id="new-time" type="button" class="check">Nieuwe tijd</button>
 		</section>
 		<section id="read" class="hide menu-item">
 			<h2>Hoe laat is het op de klok?</h2>
@@ -57,28 +57,35 @@
 		</section>
 		<section id="color" class="hide menu-item">
 			<h2>Kies de kleuren van de klok</h2>
-				<div data-color="clock" class="choose-color">
-					<p>Kies de kleur van de wijzerplaat</p>
-					<button id="pink" class="color-choice" type="button"></button>
-					<button id="lightgreen" class="color-choice" type="button"></button>
-					<button id="orange" class="color-choice" type="button"></button>
-					<button id="yellow" class="color-choice" type="button"></button>
-				</div>
-				<div data-color="hands.minute" class="choose-color">
-					<p>Kies de kleur van de minutenwijzer</p>
-					<button id="white" class="color-choice" type="button"></button>
-					<button id="purple" class="color-choice" type="button"></button>
-					<button id="blue" class="color-choice" type="button"></button>
-					<button id="red" class="color-choice" type="button"></button>
-				</div>
-				<div data-color="hands.hour" class="choose-color">
-					<p>Kies de kleur van de urenwijzer</p>
-					<button id="lightyellow" class="color-choice" type="button"></button>
-					<button id="gray" class="color-choice" type="button"></button>
-					<button id="darkblue" class="color-choice" type="button"></button>
-					<button id="green" class="color-choice" type="button"></button>
-				</div>
+			<div data-color="clock" class="choose-color">
+				<p>Kies de kleur van de wijzerplaat</p>
+				<button id="pink" class="color-choice" type="button"></button>
+				<button id="lightgreen" class="color-choice" type="button"></button>
+				<button id="orange" class="color-choice" type="button"></button>
+				<button id="yellow" class="color-choice" type="button"></button>
+			</div>
+			<div data-color="hands.minute" class="choose-color">
+				<p>Kies de kleur van de minutenwijzer</p>
+				<button id="white" class="color-choice" type="button"></button>
+				<button id="purple" class="color-choice" type="button"></button>
+				<button id="blue" class="color-choice" type="button"></button>
+				<button id="red" class="color-choice" type="button"></button>
+			</div>
+			<div data-color="hands.hour" class="choose-color">
+				<p>Kies de kleur van de urenwijzer</p>
+				<button id="lightyellow" class="color-choice" type="button"></button>
+				<button id="gray" class="color-choice" type="button"></button>
+				<button id="darkblue" class="color-choice" type="button"></button>
+				<button id="green" class="color-choice" type="button"></button>
+			</div>
 		</section>
+		<section id="settings" class="hide menu-item">
+			<h2>Kies jouw level</h2>
+			<button data-level="1" class="level active-level" type="button">1: hele en halve uren</button>
+			<button data-level="2" class="level" type="button">2: kwartieren</button>
+			<button data-level="3" class="level" type="button">3: minuten</button>
+		</section>
+
 
 	</body>
 </html>

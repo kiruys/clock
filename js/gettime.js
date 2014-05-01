@@ -31,9 +31,29 @@ $(document).ready(function () {
 	$('#check-time').on('click', checkTime);
 
 	function generateTime() {
-		randomTime.hour = Math.floor((Math.random()*12)+1);
-		randomTime.minutes = Math.floor(Math.floor((Math.random()*60))/5) * 5;
-		$('#random-time').text(randomTime.hour + ' uur en ' + randomTime.minutes + ' minuten');
+		randomTime.hour = Math.floor((Math.random()* 12) + 1);
+		if (localStorage['level'] === '1') {
+			randomTime.minutes = Math.round(Math.random()) * 30;
+		}
+		if (localStorage['level'] === '2') {
+			randomTime.minutes = (Math.floor((Math.random() * 4) + 1) * 15) - 15;
+		}
+		if (localStorage['level'] === '3') {
+			randomTime.minutes = Math.floor((Math.random() * 60) + 1) - 1;
+		}
+
+		if (randomTime.minutes === 0) {
+			$('#random-time').text(randomTime.hour + ' uur');
+			return;
+		}
+		if (randomTime.minutes === 1) {
+			$('#random-time').text(randomTime.hour + ' uur en ' + randomTime.minutes + ' minuut');
+			return;
+		}
+		if (randomTime.minutes > 0) {
+			$('#random-time').text(randomTime.hour + ' uur en ' + randomTime.minutes + ' minuten');
+			return;
+		}	
 	}
 
 	function checkTime() {
