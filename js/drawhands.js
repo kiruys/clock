@@ -12,15 +12,12 @@ function generateHandAngles() {
 
 	if (localStorage['level'] === '1' | localStorage['level'] === undefined) {
 		hands.minute.angle = Math.round(Math.random()) * 180 + 90;
-		console.log('level 1');
 	}
 	if (localStorage['level'] === '2') {
 		hands.minute.angle = Math.floor((Math.random() * 4) + 1) * 90;
-		console.log('level 2');
 	}
 	if (localStorage['level'] === '3') {
 		hands.minute.angle = Math.floor((Math.random() * 60) + 1) * 6;
-		console.log('level 3');
 	}
 	
 	minutes = getMinutes(resetAngle(hands.minute.angle));

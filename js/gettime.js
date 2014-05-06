@@ -57,12 +57,18 @@ $(document).ready(function () {
 	}
 
 	function checkTime() {
-		var hourAngle, minuteAngle, clockHour, clockMinutes;
+		var hourAngle, minuteAngle, clockHour, clockMinutes, hourAngleExt, clockHourExt;
+
 		hourAngle = resetAngle(hands.hour.angle);
 		minuteAngle = resetAngle(hands.minute.angle);
+		hourAngleExt = resetAngle(hands.hour.angle + 5);
+
 		clockHour = getHour(hourAngle);
+		clockHourExt = getHour(hourAngleExt);
 		clockMinutes = Math.round(getMinutes(minuteAngle));
-		if (clockMinutes < (randomTime.minutes + 1) & clockMinutes > randomTime.minutes -1) {
+		console.log(clockMinutes, randomTime.minutes);
+
+		if (checkMinutes(clockMinutes) & checkHour(clockHour, clockHourExt)) {
 			
 			alert('Goed zo!');
 			generateTime();
@@ -72,6 +78,22 @@ $(document).ready(function () {
 		alert('Probeer het nog eens');
 		//drawText('negative');
 		return;
+
+
+		function checkMinutes(clockMinutes) {
+			if (clockMinutes <= (randomTime.minutes + 1) & clockMinutes >= randomTime.minutes - 1) {
+				return true;
+			}
+			if ((clockMinutes === 59 | clockMinutes === 60) & randomTime.minutes === 0) {
+				return true;
+			}
+		}
+
+		function checkHour(clockHour, clockHourExt) {
+			if (clockHour === randomTime.hour | clockHourExt === randomTime.hour) {
+				return true;
+			}
+		}
 	}
 
 	function drawBalloon() {
